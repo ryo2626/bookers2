@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <header class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container">
+      <h4 class="nav navbar-nav navbar-left">Bookers</h4>
+        <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+
+          <li>
+            <%= link_to user_path(current_user.id) do %>
+              <i class="glyphicon glyphicon-home text-muted"></i>
+              <span class="text-muted">Home</span>
+              <% end %>
+          </li>
+
+          <li>
+            <%= link_to users_path do %>
+            <i class="glyphicon glyphicon-user text-muted"></i>
+            <span class="text-muted">Users</span>
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to books_path do %>
+              <i class="glyphicon glyphicon-book text-muted"></i>
+              <span class="text-muted">Books</span>
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="glyphicon glyphicon-log-out text-muted"></i>
+              <span class="text-muted">logout</span>
+            <% end %>
+          </li>
+
+        <% else %>
+
+          <li>
+            <%= link_to root_path do %>
+              <i class="glyphicon glyphicon-home text-muted"></i>
+              <span class="text-muted">Home</span>
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to home_about_path do %>
+              <i class="glyphicon glyphicon-link text-muted"></i>
+              <span class="text-muted">About</span>
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to new_user_registration_path do %>
+              <i class="glyphicon glyphicon-edit text-muted"></i>
+              <span class="text-muted">Sign up</span>
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to user_session_path, method: :post do %>
+              <i class="glyphicon glyphicon-log-in text-muted"></i>
+              <span class="text-muted">login</span>
+            <% end %>
+          </li>
+
+        <% end %>
+      </ul>
+    </div>
+  </header>
+
+<body class="margin">
+  <%= yield %>
+</body>
+
+
+<footer>
+<div class="container">
+<div class="row">
+  <h5 class="col-lg-offset-10 col-lg-2">CopyRightInfratop.inc</h5>
+</div>
+</div>
+</footer>
+
+</html>
+
